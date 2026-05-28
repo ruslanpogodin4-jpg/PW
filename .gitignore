@@ -31,3 +31,8 @@ CopilotIndices/
 *.tmp
 temp/
 cache/
+*.bht 
+*.data 
+*.gs 
+server/backup/ 
+server/gamed/ 
