@@ -36,3 +36,6 @@ cache/
 *.gs 
 server/backup/ 
 server/gamed/ 
+server/backup/ 
+server/gamed/ 
+server/gdeliveryd/ 
