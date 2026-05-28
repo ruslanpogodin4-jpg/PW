@@ -1,0 +1,163 @@
+<h5>Менеджер персонажей</h5><hr>
+
+<div class="charsList dark-form">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>Стартовые персонажи</h6>
+            <table class="table table-dark">
+                <tr>
+                    <td width="60%">16 - Воин</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=16">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=16">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>19 - Маг</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=19">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=19">Визуальный редактор</a></td>
+                </tr>
+                <tr>
+                    <td>24 - Оборотень</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=24">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=24">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>23 - Друид</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=23">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=23">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>31 - Прист</td>
+                    <td><a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=31">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=31">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>28 - Лучник</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=28">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=28">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>27 - Син</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=27">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=27">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>20 - Шаман</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=20">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=20">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>18 - Страж</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=18">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=18">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>17 - Мистик</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=17">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=17">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>21 - Призрак</td>
+                    <td><a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=21">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=21">Визуальный редактор</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>22 - Жнец</td>
+                    <td>
+                        <a class="badge badge-primary" href="{adr}/?controller=editor&page=xml&id=22">XML</a>
+                        <a class="badge badge-success" href="{adr}/?controller=editor&id=22">Визуальный редактор</a>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <samp>
+            </samp>
+            <div class="card" style="background: #343d3f">
+                <div class="card-body">
+                    <p class="card-text">
+                        После изменения выполните сохранение персонажей, для этого введите команду.
+                        <br><kbd>{save_gamedbg}</kbd><br>
+                        Это нужно делать после того, как закончите вносить изминения в стартовых персонажей. <br>
+                        <b>Для обычных персонажей делать этого не нужно!</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h6>Редактировать персонажа</h6>
+            <div class="form-group">
+                <input type="text" class="form-control" name="charIDEdit" placeholder="ID персонажа">
+            </div>
+            <button class="btn btn-sm btn-success" onclick="goEdit('xml')">XML</button>
+            <button class="btn btn-sm btn-info" onclick="goEdit('visual')">Визуальный редактор</button>
+
+            <br>
+            <hr>
+
+            <h6>Изменить уровень</h6>
+            <div class="form-group">
+                <input type="text" class="form-control" name="charIDLevelUp" placeholder="ID персонажа">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="charLevelUp" placeholder="Новый уровень персонажа">
+            </div>
+            <button class="btn btn-sm btn-success" onclick="goLevelUp()">Изменить уровень</button>
+
+            <br>
+            <hr>
+
+            <h6>Телепорт, обнуление и удаление</h6>
+            <div class="form-group">
+                <input type="text" class="form-control" name="charIDFunc" placeholder="ID персонажа">
+            </div>
+            <button class="btn btn-sm btn-success" onclick="goTeleport()">Телепортировать в ГД</button>
+            <button class="btn btn-sm btn-info" onclick="goNullChar()">Обнолить Дух и Опыт</button>
+            <button class="btn btn-sm btn-warning" onclick="goDelChar()">Удалить персонажа</button>
+
+            <br>
+            <hr>
+
+            <h6>Переименовать персонажа</h6>
+            <div class="form-group">
+                <input type="text" class="form-control" name="renameIDRole" placeholder="ID персонажа">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="renameOldNameRole" placeholder="Старое имя">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="renameNewNameRole" placeholder="Новое имя">
+            </div>
+            <button class="btn btn-sm btn-success" onclick="goRenameRole()">Переименовать</button>
+
+            <br>
+            <hr>
+
+            <h6>Выдача золота на аккаунт</h6>
+            <div class="form-group">
+                <input type="text" class="form-control" name="charIDCash" placeholder="ID аккаунта">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="countCash" placeholder="Количество золота">
+            </div>
+            <button class="btn btn-sm btn-success" onclick="goAddCash()">Выдать золото</button>
+        </div>
+    </div>
+</div>

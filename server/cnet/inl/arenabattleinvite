@@ -1,0 +1,47 @@
+	public:
+		int role_id;
+		int team_id;
+		int battle_mode;
+		int battle_id;
+		int world_tag;
+		enum { PROTOCOL_TYPE = PROTOCOL_ARENABATTLEINVITE };
+	public:
+		ArenaBattleInvite() { type = PROTOCOL_ARENABATTLEINVITE; }
+		ArenaBattleInvite(void*) : Protocol(PROTOCOL_ARENABATTLEINVITE) { }
+		ArenaBattleInvite (int l_role_id = 0,int l_team_id = 0,int l_battle_mode = 0,
+			int l_battle_id = 0,int l_world_tag = 0)
+			 : role_id(l_role_id),team_id(l_team_id),battle_mode(l_battle_mode)
+			,battle_id(l_battle_id),world_tag(l_world_tag)
+		{
+			type = PROTOCOL_ARENABATTLEINVITE;
+		}
+
+		ArenaBattleInvite(const ArenaBattleInvite &rhs)
+			: Protocol(rhs),role_id(rhs.role_id),team_id(rhs.team_id),battle_mode(rhs.battle_mode)
+			,battle_id(rhs.battle_id),world_tag(rhs.world_tag) { }
+
+		GNET::Protocol *Clone() const { return new ArenaBattleInvite(*this); }
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << role_id;
+			os << team_id;
+			os << battle_mode;
+			os << battle_id;
+			os << world_tag;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> role_id;
+			os >> team_id;
+			os >> battle_mode;
+			os >> battle_id;
+			os >> world_tag;
+			return os;
+		}
+
+		int PriorPolicy( ) const { return 1; }
+
+		bool SizePolicy(size_t size) const { return size <= 512; }

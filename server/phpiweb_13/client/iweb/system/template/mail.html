@@ -1,0 +1,169 @@
+<h5>Отправить почту</h5>
+<hr>
+
+<div class="dark-form">
+    <h6>Недавние предметы</h6>
+
+    <div class="btn-group col-md-12">
+            <select title="" class="selectPicker form-control" data-live-search="true" name="lastItems">
+                {sendingItems}
+            </select>
+            <button class="btn btn-success btn-sm col-md-3" onclick="selectItemMail()">Выбрать предмет</button>
+    </div>
+
+    <hr>
+
+    <h6>Форма сообщения</h6>
+    <div class="form-group row">
+        <label for="idChar" class="col-sm-2 col-form-label col-form-label-sm">ID Персонажа</label>
+        <div class="col-sm-10">
+            <input title="test" data-toggle="tooltip" type="number" class="form-control form-control-sm" id="idChar"
+                   value="{idChar}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="idItem" class="col-sm-2 col-form-label col-form-label-sm">ID Предмета</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control form-control-sm" id="idItem">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="countItem" class="col-sm-2 col-form-label col-form-label-sm">Количество</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control form-control-sm" id="countItem" value="1">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="maxCountItem" class="col-sm-2 col-form-label col-form-label-sm">Макс. Количество</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control form-control-sm" id="maxCountItem" value="9999">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="octetItem" class="col-sm-2 col-form-label col-form-label-sm">Окстет</label>
+        <div class="col-sm-10">
+            <textarea rows="5" class="form-control form-control-sm" id="octetItem"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="prototypeItem" class="col-sm-2 col-form-label col-form-label-sm">Привязка
+            <button type="button" onclick="modal_mask()" class="btn btn-primary btn-sm" data-toggle="modal"
+                    data-target="#prototypeWin">Выбрать</button>
+        </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="prototypeItem" value="0">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="timeItem" class="col-sm-2 col-form-label col-form-label-sm">Время выдачи</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="timeItem" value="0">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="maskItem" class="col-sm-2 col-form-label col-form-label-sm">Маска</label>
+        <div class="col-sm-10">
+            <select class="form-control form-control-sm" id="maskItem">
+                <option value="0" selected="selected">Разное</option>
+                <option value="1">Оружие</option>
+                <option value="2">Голова</option>
+                <option value="8">Накидка</option>
+                <option value="16">Корпус</option>
+                <option value="64">Штаны</option>
+                <option value="128">Обувь</option>
+                <option value="256">Наручи</option>
+                <option value="4096">Полет</option>
+                <option value="1536">Кольца</option>
+                <option value="8192">Стиль: Верх</option>
+                <option value="16384">Стиль: Низ</option>
+                <option value="32768">Стиль: Сапоги</option>
+                <option value="65536">Стиль: Наручи</option>
+                <option value="8388608">Джин</option>
+                <option value="1048576">Хирка хп</option>
+                <option value="2097152">Хирка мп</option>
+                <option value="262144">Книга(Трактат)</option>
+                <option value="524288">Смайлы</option>
+                <option value="33554432">Прически</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="moneyItem" class="col-sm-2 col-form-label col-form-label-sm">Деньги</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="moneyItem" value="0">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="titleItem" class="col-sm-2 col-form-label col-form-label-sm">Заголовок сообщения</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="titleItem" value="{titleMail}">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="messageItem" class="col-sm-2 col-form-label col-form-label-sm">Сообщение письма</label>
+        <div class="col-sm-10">
+            <input title="test" data-toggle="tooltip" type="text" class="form-control form-control-sm" id="messageItem"
+                   value="{messageMail}">
+        </div>
+    </div>
+    <button name="sendMail" class="btn btn-success"> Отправить почту</button>
+    <button name="sendMailOnline" class="btn btn-primary"> Отправить персонажам онлайн</button>
+</div>
+
+<div class="modal fade" id="prototypeWin" tabindex="-1" role="dialog" aria-labelledby="prototypeLabel"
+     aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="prototypeLabel">Привязка предмета</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body dark-form" style="overflow:scroll; height:400px; color: #b6babf">
+                <label><input type='checkbox' class='custom-checkbox' name='mask_1' value='1'/> Не исчезает при гибели
+                    персонажа</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_2' value='2'/> Не возможно
+                    выбросить</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_4' value='4'/> Не возможно
+                    продать</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_8' value='8'/> Нельзя
+                    выкинуть</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_16' value='16'/> Нельзя передать игроку</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_32' value='32'/> Нельзя
+                    улучшить</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_64' value='64'/> Символ
+                    сохранения</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_128' value='128'/> Не поместить на
+                    склад</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_256' value='256'/> Исчезает при выходе
+                    из текущей локации</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_512' value='512'/> Авто использование
+                    при получении</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_1024' value='1024'/> Исчезает при
+                    гибели</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_2048' value='2048'/> Исчезает при
+                    выходе</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_4096' value='4096'/> Нельзя
+                    отремонтировать</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_8192' value='8192'/> Нанесен
+                    урон</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_16384' value='16384'/> Невозможно
+                    поместить на склад учетной записи</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_32768' value='32768'/> Предмет привязан
+                    к персонажу</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_65536' value='65536'/> Можно продать в поисках сокровищ</label><br>
+                <label><input type='checkbox' class='custom-checkbox' name='mask_131072' value='131072'/> Товар со спец покупок</label><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" id="accept" class="btn btn-primary" data-dismiss="modal">Применить</button>
+            </div>
+        </div>
+    </div>
+</div>
+

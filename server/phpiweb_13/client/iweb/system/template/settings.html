@@ -1,0 +1,157 @@
+<h5>Настройки</h5>
+<hr>
+
+<nav>
+    <div class="nav nav-tabs_new box-shadow" id="nav-tab" role="tablist">
+
+        <a class="nav-item_new nav-link_new active_new" id="nav-main-tab" data-toggle="tab" href="#nav-main" role="tab"
+           aria-controls="nav-main" aria-selected="true">Основные</a>
+
+        <a class="nav-item_new nav-link_new" id="nav-server-tab" data-toggle="tab" href="#nav-server" role="tab"
+           aria-controls="nav-server" aria-selected="false">PW Сервер</a>
+
+        <a class="nav-item_new nav-link_new" id="nav-iweb-server-tab" data-toggle="tab" href="#nav-iweb-server" role="tab"
+           aria-controls="nav-iweb-server" aria-selected="false">IWEB Cервер</a>
+
+        <a class="nav-item_new nav-link_new" id="nav-data-tab" data-toggle="tab" href="#nav-data" role="tab"
+           aria-controls="nav-data" aria-selected="false">Данные</a>
+    </div>
+</nav>
+<div class="tab-content dark-form" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-main" role="tabpanel" aria-labelledby="nav-main-tab">
+        <br>
+
+        <div class="form-group">
+            Название: <input title="" class="form-control form-control-sm" type="text" name="config[site_title]" value="{main_site_title}">
+            <small class="form-text text-muted">Название котое будет отображаться в меню</small>
+        </div>
+
+        <div class="form-group">
+            Адрес: <input title="" class="form-control form-control-sm" type="text" name="config[site_adr]" value="{main_site_adr}">
+            <small class="form-text text-muted">Адрес сайта где расположен ваш iweb</small>
+        </div>
+
+        <div class="form-group">
+            Язык: {main_site_lang}
+            <small class="form-text text-muted">Выбирете язык на котором вам удобнее</small>
+        </div>
+
+        <div class="form-group">
+            Проверка обновлений: {main_checkUpdate}
+            <small class="form-text text-muted">Проверять обновления на оф. сайте</small>
+        </div>
+
+        <div class="form-group">
+            Виджет чата: {main_widgetChat}
+            <small class="form-text text-muted">На всех страницах панели будет выводиться окошко с игровым чатом</small>
+        </div>
+
+        <div class="form-group">
+            Количество сообщений в чате: <input title="" class="form-control form-control-sm" type="text" name="config[countChatMsg]" value="{main_countChatMsg}">
+            <small class="form-text text-muted">Укажите какое кол-во сообщений будет показано в чате iweb</small>
+        </div>
+
+        <div class="form-group">
+            Журнал действий: {main_logActions}
+            <small class="form-text text-muted">Будут записаны все действия пользователей в панели</small>
+        </div>
+
+        <div class="form-group">
+            Доступ по IP: {main_access}
+            <small class="form-text text-muted">Можете включить доступ по IP, что бы полность защитить панель</small>
+        </div>
+
+        <div class="form-group">
+            Список IP: <textarea class="form-control form-control-sm" name="config[accessIP]" rows="3">{main_accessIP}</textarea>
+            <small class="form-text text-muted">Можно указать как диапозон, пример: 192.168.0.0/24, так и обычный IP: 192.168.0.12. Несколько IP указывать через ;</small>
+        </div>
+
+        <div class="col-12 text-center" style="padding: 20px;">
+            <button class="btn btn-success" onclick="saveSettings()">Сохранить изменения</button>
+        </div>
+
+    </div>
+
+
+    <div class="tab-pane fade" id="nav-server" role="tabpanel" aria-labelledby="nav-server-tab">
+        <br>
+
+        <div class="form-group">
+            Заголовок почты: <input title="" class="form-control form-control-sm" type="text" name="config[titleMail]" value="{pw_titleMail}">
+        </div>
+        <div class="form-group">
+            Сообщение почты: <input title="" class="form-control form-control-sm" type="text" name="config[messageMail]" value="{pw_messageMail}">
+        </div>
+        <div class="form-group">
+            Версия сервера: {pw_version}
+        </div>
+        <div class="form-group">
+            Порт Gamedbd: <input title="" class="form-control form-control-sm" type="text" name="config[dbPort]" value="{pw_dbPort}">
+        </div>
+        <div class="form-group">
+            Порт GDeliveryd: <input title="" class="form-control form-control-sm" type="text" name="config[gdeliverydPort]" value="{pw_gdeliverydPort}">
+        </div>
+        <div class="form-group">
+            Порт GProvider: <input title="" class="form-control form-control-sm" type="text" name="config[GProviderPort]" value="{pw_GProviderPort}">
+        </div>
+        <div class="form-group">
+            Порт GLinkd: <input title="" class="form-control form-control-sm" type="text" name="config[linkPort]" value="{pw_linkPort}">
+        </div>
+        <div class="form-group">
+            Путь к серверу: <input title="" class="form-control form-control-sm" type="text" name="config[serverPath]" value="{pw_serverPath}">
+        </div>
+        <div class="form-group">
+            Тип auth: <input title="" class="form-control form-control-sm" type="text" name="config[serverTypeAuth]" value="{pw_serverTypeAuth}">
+        </div>
+        <div class="form-group">
+            Файл чата: <input title="" class="form-control form-control-sm" type="text" name="config[chatFile]" value="{pw_chatFile}">
+        </div>
+
+        <div class="col-12 text-center" style="padding: 20px;">
+            <button class="btn btn-success" onclick="saveSettings()">Сохранить изменения</button>
+        </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="nav-iweb-server" role="tabpanel" aria-labelledby="nav-iweb-server-tab">
+        <br>
+
+        <div class="form-group">
+            IP сервера: <input title="" class="form-control form-control-sm" type="text" name="config[server_hostname]" value="{iweb_server_hostname}">
+            <small class="form-text text-muted">Название котое будет отображаться в меню</small>
+        </div>
+
+        <div class="form-group">
+            Порт: <input title="" class="form-control form-control-sm" type="text" name="config[server_port]" value="{iweb_server_port}">
+            <small class="form-text text-muted">Название котое будет отображаться в меню</small>
+        </div>
+
+        <div class="form-group">
+            Ключ доступа: <input title="" class="form-control form-control-sm" type="text" name="config[server_key]" value="{iweb_server_key}">
+            <small class="form-text text-muted">Название котое будет отображаться в меню</small>
+        </div>
+
+        <div class="col-12 text-center" style="padding: 20px;">
+            <button class="btn btn-success" onclick="saveSettings()">Сохранить изменения</button>
+        </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="nav-data" role="tabpanel" aria-labelledby="nav-data-tab">
+        <br>
+        <b>Дождитесь завершения процесса генерации Итемов и Иконок! <br> После чего можете перезагрузить страницу для обновления
+            количества иконок и предметов.</b><br><br>
+        Файл Elements.data в папке /system/data/elements.data - {status_element} <br>
+        Итемов в базе данных: {items_count} <span class="loaderEl"></span> <br>
+        <button class="btn btn-success" onclick="goRead()">Прочитать Elements.data</button>
+        <br>
+        <br>
+        Файл с иконками /system/data/iconlist_ivtrm.png - {status_png_icons}<br>
+        Файл с названиями /system/data/iconlist_ivtrm.txt - {status_txt_icons}<br>
+        Icon в базе данных: {icons_count} <span class="loaderIc"></span> <br>
+        <button class="btn btn-success" onclick="uploadIconItems()">Загрузить иконки</button>
+
+    </div>
+
+</div>
+

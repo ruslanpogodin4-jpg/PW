@@ -1,0 +1,99 @@
+<h5>Управление пользователями</h5>
+<hr>
+
+<button class="btn btn-success btn-sm m-2" href='javascript:void(0)' data-toggle="modal" data-target="#addUser"><i
+        class="fa fa-plus"></i> Добавить пользователя
+</button>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 40%;">Имя пользователя</th>
+        <th style="width: 20%;">Группа</th>
+        <th class="text-right">Действие</th>
+    </tr>
+    </thead>
+
+    <tbody id="usersIweb">
+    [foreach-users]
+    <tr id="user_{user_id}">
+        <td>{user_id}</td>
+        <td>{user_name}</td>
+        <td>{user_title}</td>
+        <td class="text-right">
+            <button onclick='updateUser("{user_id}")' class='btn btn-sm btn-success' href='javascript:void(0)' data-toggle="modal" data-target="#updateUser">Изменить</button>
+            <button onclick='removeUser("{user_id}")' class='btn btn-sm btn-danger'>Удалить</button>
+        </td>
+    </tr>
+    [/foreach-users]
+    </tbody>
+
+</table>
+
+<div class="dark-form">
+
+    <!-- add user -->
+    <div class="modal show" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUserLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserLabel">Добавление аккаунта</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm2">
+                        <input name='iwebUsername' id="iwebUsername" class='form-control' type='text' value=""
+                               placeholder='Имя пользователя'>
+                        <input name='iwebPassword' id="iwebPassword" class='form-control' type='text' value=""
+                               placeholder='Пароль'>
+
+                        <select title="" class='form-control' name="iwebGroup" id="iwebGroup">
+                            [foreach-groupsList]
+                            <option value="{users_id_group}">{users_title}</option>
+                            [/foreach-groupsList]
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id='addUserIweb' data-dismiss="modal">Создать</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- update user -->
+    <div class="modal show" id="updateUser" tabindex="-1" role="dialog" aria-labelledby="updateUserLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateUserLabel">Изменение аккаунта</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm3">
+                        <input name='updateUsername' id="updateUsername" class='form-control' type='text' value=""
+                               placeholder='Имя пользователя'>
+                        <input name='updatePassword' id="updatePassword" class='form-control' type='text' value=""
+                               placeholder='Пароль'>
+
+                        <select title="" class='form-control' name="updateGroup" id="updateGroup">
+                            [foreach-groupsList]
+                            <option id="g_{users_id_group}" value="{users_id_group}">{users_title}</option>
+                            [/foreach-groupsList]
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id='updateUserIweb' data-dismiss="modal">Изменить</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

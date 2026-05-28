@@ -1,0 +1,14 @@
+<div class="chatWindow hideChatWindow">
+    <div class="chatHead hideChatWindow">
+        <div class="btn-group" role="group">
+            <button class="btn btn-sm btn-secondary" onclick="chengeChl(0)">Основной</button>
+            <button class="btn btn-sm btn-warning" onclick="chengeChl(1)">Мир</button>
+            <button class="btn btn-sm btn-success" onclick="chengeChl(2)">Группа</button>
+            <button class="btn btn-sm btn-primary" onclick="chengeChl(3)">Клан</button>
+        </div>
+        <label><input type="checkbox" name="autoscroll" checked="checked"> Автопрокрутка </label>
+        <a href="javascript:void(0)" onclick="showHideChat()">Показать\Скрыть</a>
+    </div>
+    <div class="chatW" data-target="chatMessage" data-chl="0"></div>
+
+</div>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{site_title}</title>
+    <link rel='shortcut icon' type='image/x-icon' href='{adr}/system/template/images/favicon.ico' />
+    <link rel="stylesheet" href="{adr}/system/template/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/codemirror.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/dialog.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/foldgutter.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/material.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/datatables.min.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/style.css">
+    <link rel="stylesheet" href="{adr}/system/template/css/character.css">
+
+    <script src="{adr}/system/template/js/jquery-3.2.1.min.js"></script>
+    <script src="{adr}/system/template/js/bootstrap.min.js"></script>
+    <script src="{adr}/system/template/js/bootstrap-select.min.js"></script>
+    <script src="{adr}/system/template/js/popper.min.js"></script>
+
+    <script src="{adr}/system/template/js/i18n/defaults-ru_RU.js"></script>
+    <script src="{adr}/system/template/js/fontawesome-all.min.js"></script>
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#menu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">{title}</a>
+
+        <div class="navbar-collapse collapse" id="menu">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="" href="{adr}">{lang_menu_main}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="chars" href="{adr}/?controller=editor&page=chars">{lang_menu_chars}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="server" href="{adr}/?controller=server">{lang_menu_server}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="mail" href="{adr}/?controller=server&page=mail">{lang_menu_mail}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="chat" href="{adr}/?controller=server&page=chat">{lang_menu_chat}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-active="settings" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{lang_menu_settings}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{adr}/?controller=settings">{lang_menu_system}</a>
+                        <a class="dropdown-item" href="{adr}/?controller=settings&page=users">{lang_menu_users}</a>
+                        <a class="dropdown-item" href="{adr}/?controller=settings&page=groups">{lang_menu_groups}</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="logs" href="{adr}/?controller=settings&page=logs">{lang_menu_logs}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" data-active="logout" href="{adr}/?controller=index&page=logout">{lang_menu_logout}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container center-block">
+    <div id="windows"></div>
+    {content}
+</div>
+{widgetChatPattern}
+<br>
+<br>
+
+<div class="text-sm-center">
+   2017-2018 © <a href="https://phpiweb.ru">phpIweb.ru</a>
+</div>
+
+<br>
+
+
+<script src="{adr}/system/template/js/codemirror.js"></script>
+<script src="{adr}/system/template/js/addons/search.js"></script>
+<script src="{adr}/system/template/js/addons/searchcursor.js"></script>
+<script src="{adr}/system/template/js/addons/jump-to-line.js"></script>
+<script src="{adr}/system/template/js/addons/dialog.js"></script>
+<script src="{adr}/system/template/js/addons/foldcode.js"></script>
+<script src="{adr}/system/template/js/addons/foldgutter.js"></script>
+<script src="{adr}/system/template/js/xml.js"></script>
+<script src="{adr}/system/template/js/datatables.min.js"></script>
+<script src="{adr}/system/template/js/dataTables.bootstrap4.min.js"></script>
+<script src="{adr}/system/template/js/notify.min.js"></script>
+<script src="{adr}/system/template/js/moment.js"></script>
+<script src="{adr}/system/template/js/system.js"></script>
+
+
+<script>
+    window.__theme = 'bs4';
+    var adr = "{adr}";
+    var widgetChat = "{widgetChat}";
+    var success = "Выполнено";
+    var info = "Информация";
+    var danger = "Не выполнено";
+
+    $(document).ready(function () {
+        var table = $('[data-toggle="datatable"]').DataTable({
+
+            language: {
+                "processing": "Подождите...",
+                "search": "Поиск:",
+                "lengthMenu": "Показать _MENU_ записей",
+                "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                "infoPostFix": "",
+                "loadingRecords": "Загрузка записей...",
+                "zeroRecords": "Записи отсутствуют.",
+                "emptyTable": "В таблице отсутствуют данные",
+                "paginate": {
+                    "first": "Первая",
+                    "previous": "Предыдущая",
+                    "next": "Следующая",
+                    "last": "Последняя"
+                },
+                "aria": {
+                    "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                    "sortDescending": ": активировать для сортировки столбца по убыванию"
+                }
+            }
+        });
+        //var info = table.page.info();
+    });
+
+
+
+    $('.selectPicker').selectpicker({
+        style: 'btn-success',
+        size: 4
+    });
+
+</script>
+</body>
+</html>

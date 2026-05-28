@@ -1,0 +1,50 @@
+	public:
+		int retcode;
+		int role_id;
+		int team_id;
+		int battle_mode;
+		int battle_id;
+		int entry_side;
+		enum { PROTOCOL_TYPE = PROTOCOL_ARENABATTLEQUEUEAPPLY_RE };
+	public:
+		ArenaBattleQueueApply_Re() { type = PROTOCOL_ARENABATTLEQUEUEAPPLY_RE; }
+		ArenaBattleQueueApply_Re(void*) : Protocol(PROTOCOL_ARENABATTLEQUEUEAPPLY_RE) { }
+		ArenaBattleQueueApply_Re (int l_retcode,int l_role_id = 0,int l_team_id = 0,
+			int l_battle_mode = 0,int l_battle_id = 0,int l_entry_side = 0)
+			 : retcode(l_retcode),role_id(l_role_id),team_id(l_team_id)
+			,battle_mode(l_battle_mode),battle_id(l_battle_id),entry_side(l_entry_side)
+		{
+			type = PROTOCOL_ARENABATTLEQUEUEAPPLY_RE;
+		}
+
+		ArenaBattleQueueApply_Re(const ArenaBattleQueueApply_Re &rhs)
+			: Protocol(rhs),retcode(rhs.retcode),role_id(rhs.role_id),team_id(rhs.team_id)
+			,battle_mode(rhs.battle_mode),battle_id(rhs.battle_id),entry_side(rhs.entry_side) { }
+
+		GNET::Protocol *Clone() const { return new ArenaBattleQueueApply_Re(*this); }
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << retcode;
+			os << role_id;
+			os << team_id;
+			os << battle_mode;
+			os << battle_id;
+			os << entry_side;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> retcode;
+			os >> role_id;
+			os >> team_id;
+			os >> battle_mode;
+			os >> battle_id;
+			os >> entry_side;
+			return os;
+		}
+
+		int PriorPolicy( ) const { return 1; }
+
+		bool SizePolicy(size_t size) const { return size <= 512; }

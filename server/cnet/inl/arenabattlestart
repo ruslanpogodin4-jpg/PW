@@ -1,0 +1,59 @@
+	public:
+		int battle_id;
+		int map_tag;
+		int battle_type;
+		unsigned int defender;
+		unsigned int attacker;
+		unsigned int max_player_cnt;
+		int start_time;
+		int end_time;
+		enum { PROTOCOL_TYPE = PROTOCOL_ARENABATTLESTART };
+	public:
+		ArenaBattleStart() { type = PROTOCOL_ARENABATTLESTART; }
+		ArenaBattleStart(void*) : Protocol(PROTOCOL_ARENABATTLESTART) { }
+		ArenaBattleStart (int l_battle_id,int l_map_tag,int l_battle_type,
+			unsigned int l_defender,unsigned int l_attacker,unsigned int l_max_player_cnt,
+			int l_start_time,int l_end_time)
+			 : battle_id(l_battle_id),map_tag(l_map_tag),battle_type(l_battle_type)
+			,defender(l_defender),attacker(l_attacker),max_player_cnt(l_max_player_cnt)
+			,start_time(l_start_time),end_time(l_end_time)
+		{
+			type = PROTOCOL_ARENABATTLESTART;
+		}
+
+		ArenaBattleStart(const ArenaBattleStart &rhs)
+			: Protocol(rhs),battle_id(rhs.battle_id),map_tag(rhs.map_tag),battle_type(rhs.battle_type)
+			,defender(rhs.defender),attacker(rhs.attacker),max_player_cnt(rhs.max_player_cnt)
+			,start_time(rhs.start_time),end_time(rhs.end_time) { }
+
+		GNET::Protocol *Clone() const { return new ArenaBattleStart(*this); }
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << battle_id;
+			os << map_tag;
+			os << battle_type;
+			os << defender;
+			os << attacker;
+			os << max_player_cnt;
+			os << start_time;
+			os << end_time;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> battle_id;
+			os >> map_tag;
+			os >> battle_type;
+			os >> defender;
+			os >> attacker;
+			os >> max_player_cnt;
+			os >> start_time;
+			os >> end_time;
+			return os;
+		}
+
+		int PriorPolicy( ) const { return 1; }
+
+		bool SizePolicy(size_t size) const { return size <= 48; }

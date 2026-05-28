@@ -1,0 +1,38 @@
+	public:
+		int battle_id;
+		int result;
+		int winner;
+		enum { PROTOCOL_TYPE = PROTOCOL_ARENABATTLEEND };
+	public:
+		ArenaBattleEnd() { type = PROTOCOL_ARENABATTLEEND; }
+		ArenaBattleEnd(void*) : Protocol(PROTOCOL_ARENABATTLEEND) { }
+		ArenaBattleEnd (int l_battle_id,int l_result,int l_winner)
+			 : battle_id(l_battle_id),result(l_result),winner(l_winner)
+		{
+			type = PROTOCOL_ARENABATTLEEND;
+		}
+
+		ArenaBattleEnd(const ArenaBattleEnd &rhs)
+			: Protocol(rhs),battle_id(rhs.battle_id),result(rhs.result),winner(rhs.winner) { }
+
+		GNET::Protocol *Clone() const { return new ArenaBattleEnd(*this); }
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << battle_id;
+			os << result;
+			os << winner;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> battle_id;
+			os >> result;
+			os >> winner;
+			return os;
+		}
+
+		int PriorPolicy( ) const { return 1; }
+
+		bool SizePolicy(size_t size) const { return size <= 64; }

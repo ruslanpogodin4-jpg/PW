@@ -1,0 +1,1156 @@
+<h5>Визуальный редактор</h5>
+<hr>
+
+<button class="btn btn-sm btn-success" name="saveVisual">Сохранить персонажа</button>
+<br>
+<br>
+<input type="hidden" name="id" value="{id}">
+<input class="form-control form-control-sm" type="hidden" data-name="packetItems"
+       name="visual[pocket-inv]" value="{pItems}">
+<input class="form-control form-control-sm" type="hidden" data-name="eqpItems"
+       name="visual[equipment-eqp]" value="{eItems}">
+<input class="form-control form-control-sm" type="hidden" data-name="storeItems"
+       name="visual[storehouse-store]" value="{sItems}">
+<input class="form-control form-control-sm" type="hidden" data-name="cardItems"
+       name="visual[storehouse-card]" value="{cItems}">
+
+
+<div class="dark-form" style="color: #a1a1a1">
+
+    <div class="col-sm-4 float-left">
+        Снаряжение
+        <div class="player__equipment male">
+            {equipment-items}
+        </div>
+
+        <br>
+        Инвентарь.
+        <small>ячеек: {pocket-all-count} занято: {pocket-count}</small>
+        <div class="inv_items">
+            <ul>{pocket-items}</ul>
+        </div>
+
+        <br>
+        Банк.
+        <small>ячеек: {store-all-count} занято: {store-count}</small>
+        <div class="inv_items">
+            <ul>{storehouse-items}</ul>
+        </div>
+
+        <br>
+        Карты.
+        <small>ячеек: {card-all-count} занято: {card-count}</small>
+        <div class="inv_items">
+            <ul>{card-items}</ul>
+        </div>
+
+    </div>
+    <div class="col-sm-4 float-left">
+        <button class="btn btn-dark w-100 m-1" data-toggle="modal" data-target="#vardata" href="javascript:void(0)">
+            Редактировать var_data
+        </button>
+        <button class="btn btn-dark w-100 m-1" disabled data-toggle="modal" data-target="#titles"
+                href="javascript:void(0)">Редактировать титулы
+        </button>
+        <button class="btn btn-dark w-100 m-1" data-toggle="modal" data-target="#sky"
+                href="javascript:void(0)">Редактировать небо
+        </button>
+        <button class="btn btn-dark w-100 m-1" disabled data-toggle="modal" data-target="#force"
+                href="javascript:void(0)">Редактировать фракции
+        </button>
+        <button class="btn btn-dark w-100 m-1" disabled data-toggle="modal" data-target="#skills"
+                href="javascript:void(0)">Редактировать скиллы
+        </button>
+        <button class="btn btn-dark w-100 m-1" data-toggle="modal" data-target="#property"
+                href="javascript:void(0)">Редактировать параметры
+        </button>
+        <button class="btn btn-dark w-100 m-1" data-toggle="modal" data-target="#meridian"
+                href="javascript:void(0)">Редактировать меридианы
+        </button>
+        <button class="btn btn-dark w-100 m-1" disabled data-toggle="modal" data-target="#reincarnation"
+                href="javascript:void(0)">Редактировать перерождения
+        </button>
+        <button class="btn btn-dark w-100 m-1" disabled data-toggle="modal" data-target="#pets"
+                href="javascript:void(0)">Редактировать питомцев
+        </button>
+        <button class="btn btn-dark w-100 m-1" disabled data-toggle="modal" data-target="#charview"
+                href="javascript:void(0)">Редактировать внешность
+        </button>
+        <hr>
+        Денег в инвентаре
+        <input class="form-control form-control-sm" name="visual[pocket-money]" value="{pocket-money}">
+        Денег в банке
+        <input class="form-control form-control-sm" name="visual[storehouse-money]" value="{storehouse-money}">
+        <hr>
+        Размер инвентаря
+        <input class="form-control form-control-sm" name="visual[pocket-icapacity]" value="{pocket-all-count}">
+        Размер банка
+        <input class="form-control form-control-sm" name="visual[storehouse-capacity]" value="{store-all-count}">
+        <!--pocket-count: <input class="form-control form-control-sm" name="visual[pocket-invcount]" value="{pocket-count}">-->
+    </div>
+    <div class="col-sm-4 float-left">
+        ID Муж\жена:
+        <input class="form-control form-control-sm" name="visual[base-spouse]" value="{spouse}">
+        Уровень: <i style="color: skyblue" class="far fa-info-circle" data-tip="tooltip"
+                    data-title="Для изменения уровня лучше использовать функцию на странице 'персонажи' она пересчитывает статы"></i>
+        <input class="form-control form-control-sm" name="visual[status-level]" value="{level}">
+        Культивация
+        <select class="form-control form-control-sm" name="visual[status-level2]">{level2}</select>
+        Опыт
+        <input class="form-control form-control-sm" name="visual[status-exp]" value="{exp}">
+        Дух
+        <input class="form-control form-control-sm" name="visual[status-sp]" value="{sp}">
+        Очки статов
+        <input class="form-control form-control-sm" name="visual[status-pp]" value="{pp}">
+        Репутация
+        <input class="form-control form-control-sm" name="visual[status-reputation]" value="{reputation}">
+        <hr>
+        ID игровой карты
+        <input class="form-control form-control-sm" name="visual[status-worldtag]" value="{worldtag}">
+        Позиция x
+        <input class="form-control form-control-sm" name="visual[status-posx]" value="{posx}">
+        Позиция y
+        <input class="form-control form-control-sm" name="visual[status-posy]" value="{posy}">
+        Позиция z
+        <input class="form-control form-control-sm" name="visual[status-posz]" value="{posz}">
+        <hr>
+        Тип ника
+        <select class="form-control form-control-sm" name="visual[status-invader_state]">{invader_state}</select>
+        Время ПК
+        <small>(в секундах)</small>
+        <input class="form-control form-control-sm" name="visual[status-pariah_time]" value="{pariah_time}">
+
+    </div>
+
+
+    <!--<div id="inventory">-->
+    <!--<span class="btn1"><button name="inv"></button></span>-->
+    <!--<span class="btn2"><button name="style"></button></span>-->
+    <!--&lt;!&ndash;{equipment-items}&ndash;&gt;-->
+    <!--<span class="inv_money" onload="moneyParse()">{pocket-money}</span>-->
+    <!--<div class="inv_items">-->
+    <!--&lt;!&ndash;<ul>{pocket-items}</ul>&ndash;&gt;-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="clearfix"></div>
+
+    <!-- property -->
+    <div class="modal show" id="property" tabindex="-1" role="dialog" aria-labelledby="meridianLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="propertyLabel">Редактирование параметров</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="propertyForm1" style="overflow-x: hidden; height: 450px;">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_max_ap}</small>
+                            <input name='visual[status-property-max_ap]' class='form-control form-control-sm'
+                                   type='text' value="{property_max_ap}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_vitality}</small>
+                            <input name='visual[status-property-vitality]' class='form-control form-control-sm'
+                                   type='text' value="{property_vitality}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_energy}</small>
+                            <input name='visual[status-property-energy]' class='form-control form-control-sm'
+                                   type='text' value="{property_energy}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_strength}</small>
+                            <input name='visual[status-property-strength]' class='form-control form-control-sm'
+                                   type='text' value="{property_strength}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_agility}</small>
+                            <input name='visual[status-property-agility]' class='form-control form-control-sm'
+                                   type='text' value="{property_agility}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_max_hp}</small>
+                            <input name='visual[status-property-max_hp]' class='form-control form-control-sm'
+                                   type='text' value="{property_max_hp}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_max_mp}</small>
+                            <input name='visual[status-property-max_mp]' class='form-control form-control-sm'
+                                   type='text' value="{property_max_mp}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_hp_gen}</small>
+                            <input name='visual[status-property-hp_gen]' class='form-control form-control-sm'
+                                   type='text' value="{property_hp_gen}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_mp_gen}</small>
+                            <input name='visual[status-property-mp_gen]' class='form-control form-control-sm'
+                                   type='text' value="{property_mp_gen}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_walk_speed}</small>
+                            <input name='visual[status-property-walk_speed]' class='form-control form-control-sm'
+                                   type='text' value="{property_walk_speed}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_run_speed}</small>
+                            <input name='visual[status-property-run_speed]' class='form-control form-control-sm'
+                                   type='text' value="{property_run_speed}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_swim_speed}</small>
+                            <input name='visual[status-property-swim_speed]' class='form-control form-control-sm'
+                                   type='text' value="{property_swim_speed}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_flight_speed}</small>
+                            <input name='visual[status-property-flight_speed]' class='form-control form-control-sm'
+                                   type='text' value="{property_flight_speed}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_attack}</small>
+                            <input name='visual[status-property-attack]' class='form-control form-control-sm'
+                                   type='text' value="{property_attack}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_damage_low}</small>
+                            <input name='visual[status-property-damage_low]' class='form-control form-control-sm'
+                                   type='text' value="{property_damage_low}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_damage_high}</small>
+                            <input name='visual[status-property-damage_high]' class='form-control form-control-sm'
+                                   type='text' value="{property_damage_high}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_attack_speed}</small>
+                            <input name='visual[status-property-attack_speed]' class='form-control form-control-sm'
+                                   type='text' value="{property_attack_speed}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_attack_range}</small>
+                            <input name='visual[status-property-attack_range]' class='form-control form-control-sm'
+                                   type='text' value="{property_attack_range}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_low-metal}</small>
+                            <input name='visual[status-property-addon_damage_low-metal]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_low-metal}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_low-tree}</small>
+                            <input name='visual[status-property-addon_damage_low-tree]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_low-tree}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_low-water}</small>
+                            <input name='visual[status-property-addon_damage_low-water]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_low-water}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_low-fire}</small>
+                            <input name='visual[status-property-addon_damage_low-fire]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_low-fire}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_low-ground}</small>
+                            <input name='visual[status-property-addon_damage_low-ground]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_low-ground}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_high-metal}</small>
+                            <input name='visual[status-property-addon_damage_high-metal]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_high-metal}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_high-tree}</small>
+                            <input name='visual[status-property-addon_damage_high-tree]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_high-tree}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_high-water}</small>
+                            <input name='visual[status-property-addon_damage_high-water]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_high-water}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_high-fire}</small>
+                            <input name='visual[status-property-addon_damage_high-fire]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_high-fire}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_addon_damage_high-ground}</small>
+                            <input name='visual[status-property-addon_damage_high-ground]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{property_addon_damage_high-ground}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_damage_magic_low}</small>
+                            <input name='visual[status-property-damage_magic_low]' class='form-control form-control-sm'
+                                   type='text' value="{property_damage_magic_low}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_damage_magic_high}</small>
+                            <input name='visual[status-property-damage_magic_high]' class='form-control form-control-sm'
+                                   type='text' value="{property_damage_magic_high}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_resistance-metal}</small>
+                            <input name='visual[status-property-resistance-metal]' class='form-control form-control-sm'
+                                   type='text' value="{property_resistance-metal}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_resistance-tree}</small>
+                            <input name='visual[status-property-resistance-tree]' class='form-control form-control-sm'
+                                   type='text' value="{property_resistance-tree}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_resistance-water}</small>
+                            <input name='visual[status-property-resistance-water]' class='form-control form-control-sm'
+                                   type='text' value="{property_resistance-water}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_resistance-fire}</small>
+                            <input name='visual[status-property-resistance-fire]' class='form-control form-control-sm'
+                                   type='text' value="{property_resistance-fire}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_resistance-ground}</small>
+                            <input name='visual[status-property-resistance-ground]' class='form-control form-control-sm'
+                                   type='text' value="{property_resistance-ground}"></label>
+                        <hr class="col-12 float-left">
+                        <label class="col-6 float-left">
+                            <small>{lang_property_defense}</small>
+                            <input name='visual[status-property-defense]' class='form-control form-control-sm'
+                                   type='text' value="{property_defense}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_property_armor}</small>
+                            <input name='visual[status-property-armor]' class='form-control form-control-sm' type='text'
+                                   value="{property_armor}"></label>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- meridian -->
+    <div class="modal show" id="meridian" tabindex="-1" role="dialog" aria-labelledby="meridianLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="meridianLabel">Редактирование meridian</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="meridianForm1" style="overflow-x: hidden; height: 450px;">
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_lvl}</small>
+                            <input name='visual[status-meridian_data-lvl]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_lvl}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_life_dot}</small>
+                            <input name='visual[status-meridian_data-life_dot]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_life_dot}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_die_dot}</small>
+                            <input name='visual[status-meridian_data-die_dot]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_die_dot}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_free_up}</small>
+                            <input name='visual[status-meridian_data-free_up]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_free_up}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_paid_up}</small>
+                            <input name='visual[status-meridian_data-paid_up]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_paid_up}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_login_time}</small>
+                            <input name='visual[status-meridian_data-login_time]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_login_time}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_login_days}</small>
+                            <input name='visual[status-meridian_data-login_days]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_login_days}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_trigrams_map1}</small>
+                            <input name='visual[status-meridian_data-trigrams_map1]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{meridian_data_trigrams_map1}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_trigrams_map2}</small>
+                            <input name='visual[status-meridian_data-trigrams_map2]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{meridian_data_trigrams_map2}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_trigrams_map3}</small>
+                            <input name='visual[status-meridian_data-trigrams_map3]'
+                                   class='form-control form-control-sm' type='text'
+                                   value="{meridian_data_trigrams_map3}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_reserved1}</small>
+                            <input name='visual[status-meridian_data-reserved1]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_reserved1}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_reserved2}</small>
+                            <input name='visual[status-meridian_data-reserved2]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_reserved2}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_reserved3}</small>
+                            <input name='visual[status-meridian_data-reserved3]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_reserved3}"></label>
+                        <label class="col-6 float-left">
+                            <small>{lang_meridian_reserved4}</small>
+                            <input name='visual[status-meridian_data-reserved4]' class='form-control form-control-sm'
+                                   type='text' value="{meridian_data_reserved4}"></label>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sky -->
+    <div class="modal show" id="sky" tabindex="-1" role="dialog" aria-labelledby="skyLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="skyLabel">Редактирование неба</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="skyForm1">
+                        <label class="col-6 float-left">
+                            <small>{lang_realm_data_level}</small>
+                            <input name='visual[status-realm_data-level]' class='form-control form-control-sm'
+                                   type='text' value="{realm_data_level}">
+                        </label>
+                        <label class="col-6 float-left">
+                            <small>{lang_realm_data_exp}</small>
+                            <input name='visual[status-realm_data-exp]' class='form-control form-control-sm' type='text'
+                                   value="{realm_data_exp}">
+                        </label>
+                        <label class="col-6 float-left">
+                            <small>{lang_realm_data_reserved1}</small>
+                            <input name='visual[status-realm_data-reserved1]' class='form-control form-control-sm'
+                                   type='text' value="{realm_data_reserved1}">
+                        </label>
+                        <label class="col-6 float-left">
+                            <small>{lang_realm_data_reserved2}</small>
+                            <input name='visual[status-realm_data-reserved2]' class='form-control form-control-sm'
+                                   type='text' value="{realm_data_reserved2}">
+                        </label>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- vardata -->
+    <div class="modal show" id="vardata" tabindex="-1" role="dialog" aria-labelledby="vardataLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="vardataLabel">Редактирование Var Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="vardataForm" style="overflow-x: hidden; height: 450px;">
+                        <label class="col-12">
+                            <small>{lang_vd_version}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-vd_version]"
+                                   value="{vardata_vd_version}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_pk_count}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-pk_count]"
+                                   value="{vardata_pk_count}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_pvp_cooldown}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-pvp_cooldown]"
+                                   value="{vardata_pvp_cooldown}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_pvp_flag}</small>
+                            <select class="form-control form-control-sm " name="visual[status-var_data-pvp_flag]">{vardata_pvp_flag}</select>
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_dead_flag}</small>
+                            <select class="form-control form-control-sm " name="visual[status-var_data-dead_flag]">{vardata_dead_flag}</select>
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_is_drop}</small>
+                            <select class="form-control form-control-sm " name="visual[status-var_data-is_drop]">{vardata_is_drop}</select>
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_resurrect_state}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-resurrect_state]"
+                                   value="{vardata_resurrect_state}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_resurrect_exp_reduce}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-resurrect_exp_reduce]"
+                                   value="{vardata_resurrect_exp_reduce}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_instance_hash_key1}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-instance_hash_key1]"
+                                   value="{vardata_instance_hash_key1}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_instance_hash_key2}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-instance_hash_key2]"
+                                   value="{vardata_instance_hash_key2}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_trashbox_size}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-trashbox_size]"
+                                   value="{vardata_trashbox_size}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_instance_timestamp}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_instance_timestamp]"
+                                   value="{vardata_last_instance_timestamp}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_instance_tag}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_instance_tag]" value="{vardata_last_instance_tag}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_instance_pos-x}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_instance_pos-x]"
+                                   value="{vardata_last_instance_pos_x}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_instance_pos-y}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_instance_pos-y]"
+                                   value="{vardata_last_instance_pos_y}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_instance_pos-z}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_instance_pos-z]"
+                                   value="{vardata_last_instance_pos_z}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_resurrect_hp_factor}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-resurrect_hp_factor]"
+                                   value="{vardata_resurrect_hp_factor}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_resurrect_mp_factor}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-resurrect_mp_factor]"
+                                   value="{vardata_resurrect_mp_factor}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_instance_reenter}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-instance_reenter]"
+                                   value="{vardata_instance_reenter}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_dir}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-dir]"
+                                   value="{vardata_dir}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_world_type}</small>
+                            <input class="form-control form-control-sm " name="visual[status-var_data-last_world_type]"
+                                   value="{vardata_last_world_type}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_logout_pos-x}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_logout_pos-x]" value="{vardata_last_logout_pos_x}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_logout_pos-y}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_logout_pos-y]" value="{vardata_last_logout_pos_y}">
+                        </label>
+                        <label class="col-12">
+                            <small>{lang_last_logout_pos-z}</small>
+                            <input class="form-control form-control-sm "
+                                   name="visual[status-var_data-last_logout_pos-z]" value="{vardata_last_logout_pos_z}">
+                        </label>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Редактор итема -->
+    <div class="modal show" id="pocketItem" tabindex="-1" role="dialog" aria-labelledby="pocketItemLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pocketItemLabel">Редактирование предмета</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm1">
+                        <label class="col-form-label"> ID Итема
+                            <input name='item[id]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Позиция
+                            <input name='item[pos]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Количество
+                            <input name='item[count]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Макс. количество
+                            <input name='item[max_count]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Окстет <span class="octetEdit"></span>
+                            <input name='item[data]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Привязка <a class="badge badge-primary m-2"
+                                                                   href='javascript:void(0)'
+                                                                   onclick="pTypeItem()" data-toggle="modal"
+                                                                   data-target="#prototypeWin">Выбрать</a>
+                            <input name='item[proctype]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Время жизни
+                            <span class="timeEx" style="color: lime;"><i>Не исчезнет</i></span>
+                            <input name='item[expire_date]' onkeyup="getTimeExpire()" class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> guid1
+                            <input name='item[guid1]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> guid2
+                            <input name='item[guid2]' class='form-control' type='text'>
+                        </label>
+                        <label class="col-form-label"> Маска
+                            <input name='item[mask]' class='form-control' type='text'>
+                        </label>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger" id='acceptDel' data-dismiss="modal">Удалить</button>
+                    <button type="button" class="btn btn-success" id='acceptSave' data-dismiss="modal">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Привязка итема -->
+    <div class="modal fade" id="prototypeWin" tabindex="-1" role="dialog" aria-labelledby="prototypeLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="prototypeLabel">Привязка предмета</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: #b6babf; overflow-x: hidden; height: 450px;">
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_1' value='1'/> Не исчезает при
+                        гибели
+                        персонажа</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_2' value='2'/> Не возможно
+                        выбросить</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_4' value='4'/> Не возможно
+                        продать</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_8' value='8'/> Нельзя
+                        выкинуть</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_16' value='16'/> Нельзя передать
+                        игроку
+                    </label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_32' value='32'/> Нельзя
+                        улучшить</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_64' value='64'/> Символ
+                        сохранения</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_128' value='128'/> Не поместить на
+                        склад</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_256' value='256'/> Исчезает при
+                        выходе
+                        из текущей локации</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_512' value='512'/> Авто
+                        использование
+                        при получении</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_1024' value='1024'/> Исчезает при
+                        гибели</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_2048' value='2048'/> Исчезает при
+                        выходе</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_4096' value='4096'/> Нельзя
+                        отремонтировать</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_8192' value='8192'/> Нанесен
+                        урон</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_16384' value='16384'/> Невозможно
+                        поместить на склад учетной записи</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_32768' value='32768'/> Предмет
+                        привязан
+                        к персонажу</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_65536' value='65536'/> Можно
+                        продать в поисках сокровищ</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='mask_131072' value='131072'/> Товар со
+                        спец покупок</label><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" id="accept" class="btn btn-primary" data-dismiss="modal">Применить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Редактор полета -->
+    <div class="modal show" id="editFlyOctet" tabindex="-1" role="dialog" aria-labelledby="editFlyOctetLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editFlyOctetLabel">Редактирование палета</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editFlyOctetForm1" style="overflow-x: hidden; height: 450px;">
+                        cur_time <input name='fly[cur_time]' class='form-control form-control-sm' type='text'>
+                        max_time <input name='fly[max_time]' class='form-control form-control-sm' type='text'>
+                        require_level <input name='fly[require_level]' class='form-control form-control-sm' type='text'>
+                        element_level <input name='fly[element_level]' class='form-control form-control-sm' type='text'>
+                        require_class <input name='fly[require_class]' class='form-control form-control-sm' type='text'>
+                        time_per_element <input name='fly[time_per_element]' class='form-control form-control-sm'
+                                                type='text'>
+                        speed_increase1 <input name='fly[speed_increase1]' class='form-control form-control-sm'
+                                               type='text'>
+                        speed_increase2 <input name='fly[speed_increase2]' class='form-control form-control-sm'
+                                               type='text'>
+                        flag <input name='fly[flag]' class='form-control form-control-sm' type='text'>
+                        creator <input name='fly[creator]' class='form-control form-control-sm' type='text'>
+                        unk <input name='fly[unk]' class='form-control form-control-sm' type='text'>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" onclick="writeOctet('fly')" data-dismiss="modal">
+                        Изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Редактор стиля -->
+    <div class="modal show" id="editFashionOctet" tabindex="-1" role="dialog" aria-labelledby="editFashionOctetLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editFashionOctetLabel">Редактирование стиля</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editFashionOctetForm1" style="overflow-x: hidden; height: 450px;">
+                        require_level <input name='fashion[require_level]' class='form-control form-control-sm'
+                                             type='text'>
+                        color <input name='fashion[color]' class='form-control form-control-sm' type='text'>
+                        gender <input name='fashion[gender]' class='form-control form-control-sm' type='text'>
+                        name_type <input name='fashion[name_type]' class='form-control form-control-sm' type='text'>
+                        name <input name='fashion[name]' class='form-control form-control-sm' type='text'>
+                        color_mask <input name='fashion[color_mask]' class='form-control form-control-sm' type='text'>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" onclick="writeOctet('fashion')" data-dismiss="modal">
+                        Изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Редактор стиля -->
+    <div class="modal show" id="editCardOctet" tabindex="-1" role="dialog" aria-labelledby="editCardOctetLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editCardOctetLabel">Редактирование стиля</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editCardOctetForm1" style="overflow-x: hidden; height: 450px;">
+                        {lang_card_CardType} <input name='card[CardType]' class='form-control form-control-sm' type='text'>
+                        {lang_card_CardGrade} <input name='card[CardGrade]' class='form-control form-control-sm' type='text'>
+                        {lang_card_RequiredXp} <input name='card[RequiredXp]' class='form-control form-control-sm' type='text'>
+                        {lang_card_RequiredPoints} <input name='card[RequiredPoints]' class='form-control form-control-sm' type='text'>
+                        {lang_card_MaxLvL} <input name='card[MaxLvL]' class='form-control form-control-sm' type='text'>
+                        {lang_card_LvL} <input name='card[LvL]' class='form-control form-control-sm' type='text'>
+                        {lang_card_CurrentExp} <input name='card[CurrentExp]' class='form-control form-control-sm' type='text'>
+                        {lang_card_Reborn} <input name='card[Reborn]' class='form-control form-control-sm' type='text'>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" onclick="writeOctet('card')" data-dismiss="modal">
+                        Изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Редактор оуружия -->
+    <div class="modal show bd-example-modal-lg" id="editWeaponOctet" tabindex="-1" role="dialog"
+         aria-labelledby="editWeaponOctetLabel"
+         aria-hidden="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editWeaponOctetLabel">Редактирование оружия</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form id="editWeaponOctetForm1">
+
+                            <div class="col-md-6 float-left" style="overflow-x: hidden; height: 450px;">
+                                <div style="margin-bottom: -10px;"> {lang_weapon_level} <input name='weapon[level]'
+                                                                                               class="float-right"
+                                                                                               type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_class} <a
+                                        class="badge badge-primary m-2" href='javascript:void(0)'
+                                        onclick="charClass('weapon[class]')" data-toggle="modal"
+                                        data-target="#charClass">Выбрать</a> <input name='weapon[class]'
+                                                                                    class="float-right" type='text'>
+                                </div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_strong} <input name='weapon[strong]'
+                                                                                                class="float-right"
+                                                                                                type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_endurance} <input
+                                        name='weapon[endurance]' class="float-right" type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_agility} <input name='weapon[agility]'
+                                                                                                 class="float-right"
+                                                                                                 type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_intellect} <input
+                                        name='weapon[intellect]' class="float-right" type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_physAtk} <input
+                                        name='weapon[MinPhysAtk]' class="float-right" style="width: 75px;" type='text'>
+                                    <i class="float-right pr-2 pl-2"> - </i> <input name='weapon[MaxPhysAtk]'
+                                                                                    class="float-right"
+                                                                                    style="width: 75px;" type='text'>
+                                </div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_magAtk} <input name='weapon[MinMagAtk]'
+                                                                                                class="float-right"
+                                                                                                style="width: 75px;"
+                                                                                                type='text'> <i
+                                        class="float-right pr-2 pl-2"> - </i> <input name='weapon[MaxMagAtk]'
+                                                                                     class="float-right"
+                                                                                     style="width: 75px;" type='text'>
+                                </div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_strength} <input
+                                        name='weapon[strength]' class="float-right" style="width: 75px;" type='text'> <i
+                                        class="float-right pr-2 pl-2"> - </i> <input name='weapon[maxStrength]'
+                                                                                     class="float-right"
+                                                                                     style="width: 75px;" type='text'>
+                                </div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_AtkSpeed} <input
+                                        name='weapon[AtkSpeed]' class="float-right" type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_Distance} <input
+                                        name='weapon[Distance]' class="float-right" type='text'></div>
+                                <br>
+                                <!--<div style="margin-bottom: -10px;"> {lang_weapon_maxStrength} <input name='weapon[maxStrength]' class="float-right" type='text'></div><br>-->
+                                <div style="margin-bottom: -10px;"> {lang_weapon_itemClass} <input
+                                        name='weapon[itemClass]' class="float-right" type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;">
+                                    {lang_weapon_itemFlag} <input name='weapon[itemFlag]' class="float-right"
+                                                                  type='text'>
+                                </div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_creator} <input name='weapon[creator]'
+                                                                                                 class="float-right"
+                                                                                                 type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_NeedAmmo} <input
+                                        name='weapon[NeedAmmo]' class="float-right" type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_WeaponClass}
+                                    <!--<input name='weapon[WeaponClass]' class="float-right" type='text'>-->
+                                    <select  style="float: right" title="" name="weapon[WeaponClass]">
+                                        <option value="1">Мечи</option>
+                                        <option value="5">Копья</option>
+                                        <option value="9">Топоры/Молоты</option>
+                                        <option value="13">Оружие дальнего боя</option>
+                                        <option value="182">Кастеты</option>
+                                        <option value="291">Бич</option>
+                                        <option value="292">Магическое оружие</option>
+                                        <option value="23749">Кинжалы</option>
+                                        <option value="25333">Магическая сфера</option>
+                                        <option value="44878">Сабля</option>
+                                        <option value="44879">Коса</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_Rang} <input name='weapon[Rang]'
+                                                                                              class="float-right"
+                                                                                              type='text'></div>
+                                <br>
+                                <div style="margin-bottom: -10px;"> {lang_weapon_AmmoType} <input
+                                        name='weapon[AmmoType]' class="float-right" type='text'></div>
+                                <br>
+                                <!--<div style="margin-bottom: -10px;"> {lang_weapon_MaxPhysAtk} <input name='weapon[MaxPhysAtk]' class="float-right" type='text'></div><br>-->
+                                <!--<div style="margin-bottom: -10px;"> {lang_weapon_MaxMagAtk} <input name='weapon[MaxMagAtk]' class="float-right" type='text'></div><br>-->
+
+                                <div style="margin-bottom: -10px;"> {lang_weapon_FragDistance} <input
+                                        name='weapon[FragDistance]' class="float-right" type='text'></div>
+                            </div>
+                        </form>
+                        <div class="col-md-6 float-left">
+                            <!--<div class="clearfix"></div>-->
+
+                            ячейки
+                            <select style="height: 100px" multiple class="form-control" id="cellWeapon"></select>
+                            <button class="btn btn-sm btn-success" onclick="addCell()"><i class="far fa-plus"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="removeCell()"><i class="far fa-minus"></i>
+                            </button>
+                            <br>
+                            <br>
+                            бонусы
+                            <select style="height: 200px" multiple  ondblclick='editBonus()' class="form-control" id="bonusWeapon"></select>
+                            <button class="btn btn-sm btn-success" onclick="loadListBonus('weapon')" data-toggle="modal" data-target="#addBonus">
+                                <i class="far fa-plus"></i>
+                            </button>
+                            <button class="btn btn-sm btn-info" onclick="editBonus()">
+                                <i class="far fa-pencil-alt"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="removeBonus()">
+                                <i class="far fa-minus"></i>
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" onclick="writeOctet('weapon')" data-dismiss="modal">
+                        Изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Выбор класса -->
+    <div class="modal show" id="charClass" style="box-shadow: 0 0 10px #191718" tabindex="-1" role="dialog"
+         aria-labelledby="charClassLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="charClassLabel">Класс персонажа</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="charClassForm" style="overflow-x: hidden; height: 450px;">
+
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_1' value="1"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Воин</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_2' value="2"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Маг</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_4' value="4"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Шаман</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_8' value="8"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Друид</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_16' value="16"><span
+                                class="custom-control-indicator"></span><span class="custom-control-description"> Оборотень</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_32' value="32"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Убийца</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_64' value="64"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Лучник</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_128' value="128"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Жрец</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_256' value="256"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Страж</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_512' value="512"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Мистик</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_1024'
+                                                                                       value="1024"><span
+                                class="custom-control-indicator"></span><span class="custom-control-description"> Призрак</span></label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2"><input type="checkbox"
+                                                                                       class='custom-control-input clsChar'
+                                                                                       name='mask_2048'
+                                                                                       value="2048"><span
+                                class="custom-control-indicator"></span><span
+                                class="custom-control-description"> Жнец</span></label><br>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" id="setClsChar" data-dismiss="modal">Применить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- добавление бонуса -->
+    <div class="modal show" id="addBonus" tabindex="-1" role="dialog" aria-labelledby="addBonusLabel"
+         aria-hidden="false">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBonusLabel">Добавление бонуса</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addBonusForm1" style="overflow-x: hidden; height: 310px; width:250px;">
+
+                        <select name="addBonusList" onchange="applyBonus('weapon', 'bonus')" id="">
+                            <option value="-1">Выбрать...</option>
+                        </select><br>
+
+                        ИД бонуса<br>
+                        <input type="text" name="bonus[id]"><br>
+                        Тип бонуса <br>
+                        <input type="text" name="bonus[type]"><br>
+                        Значение 1<br>
+                        <input type="text" name="bonus[stat]"><br>
+                        Значение 2<br>
+                        <input type="text" name="bonus[dopStat1]"><br>
+                        Значение 3<br>
+                        <input type="text" name="bonus[dopStat2]"><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" onclick="addBonus()" data-dismiss="modal">
+                        добавить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Редактирование бонуса -->
+    <div class="modal show" id="editBonus" tabindex="-1" role="dialog" aria-labelledby="editBonusLabel"
+         aria-hidden="false">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editBonusLabel">Редактирование бонуса</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBonusForm1" style="overflow-x: hidden; height: 310px;">
+                        <select name="addBonusList" onchange="applyBonus('weapon', 'editBonus')">
+                            <option value="-1">Выбрать...</option>
+                        </select><br>
+                        ИД бонуса<br>
+                        <input type="text" name="editBonus[id]"><br>
+                        Тип бонуса<br>
+                        <input type="text" name="editBonus[type]" value="8192"><br>
+                        Значение 1<br>
+                        <input type="text" name="editBonus[stat]"><br>
+                        Значение 2<br>
+                        <input type="text" name="editBonus[dopStat1]"><br>
+                        Значение 3<br>
+                        <input type="text" name="editBonus[dopStat2]"><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" onclick="editBonusSave()" data-dismiss="modal">
+                        изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<br>
+<button class="btn btn-sm btn-success" name="saveVisual">Сохранить персонажа</button>

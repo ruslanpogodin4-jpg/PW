@@ -1,0 +1,35 @@
+	public:
+		int role_id;
+		int team_id;
+		enum { PROTOCOL_TYPE = PROTOCOL_ARENABATTLECANCEL };
+	public:
+		ArenaBattleCancel() { type = PROTOCOL_ARENABATTLECANCEL; }
+		ArenaBattleCancel(void*) : Protocol(PROTOCOL_ARENABATTLECANCEL) { }
+		ArenaBattleCancel (int l_role_id = 0,int l_team_id = 0)
+			 : role_id(l_role_id),team_id(l_team_id)
+		{
+			type = PROTOCOL_ARENABATTLECANCEL;
+		}
+
+		ArenaBattleCancel(const ArenaBattleCancel &rhs)
+			: Protocol(rhs),role_id(rhs.role_id),team_id(rhs.team_id) { }
+
+		GNET::Protocol *Clone() const { return new ArenaBattleCancel(*this); }
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << role_id;
+			os << team_id;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> role_id;
+			os >> team_id;
+			return os;
+		}
+
+		int PriorPolicy( ) const { return 1; }
+
+		bool SizePolicy(size_t size) const { return size <= 512; }

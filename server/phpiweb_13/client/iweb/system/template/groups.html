@@ -1,0 +1,328 @@
+<h5>{lang_title}</h5>
+<hr>
+
+<button class="btn btn-sm btn-success m-2" href='javascript:void(0)' data-toggle="modal" data-target="#addGroup"><i
+        class="fa fa-plus"></i> {lang_add}
+</button>
+
+<div class="clearfix"></div>
+
+[foreach-groups]
+<div id="group_{group_id_group}" class="float-left col-sm-4 d-flex p-3 my-3 ml-2 bg-dark rounded box-shadow">
+    <div class="lh-100" style="width: 100%;">
+        <h6 class="mb-1 text-white"><i class="fa fa-users"></i> {group_title}</h6>
+        <small>{lang_xml_edit} <span class="float-right">{group_xml_edit}</span></small>
+        <br>
+        <small>{lang_visual_edit} <span class="float-right">{group_visual_edit}</span></small>
+        <br>
+        <small>{lang_gm_manager} <span class="float-right">{group_gm_manager}</span></small>
+        <br>
+        <small>{lang_kick_role} <span class="float-right">{group_kick_role}</span></small>
+        <br>
+        <small>{lang_ban} <span class="float-right">{group_ban}</span></small>
+        <br>
+        <small>{lang_add_gold} <span class="float-right">{group_add_gold}</span></small>
+        <br>
+        <small>{lang_level_up} <span class="float-right">{group_level_up}</span></small>
+        <br>
+        <small>{lang_rename_role} <span class="float-right">{group_rename_role}</span></small>
+        <br>
+        <small>{lang_teleport} <span class="float-right">{group_teleport}</span></small>
+        <br>
+        <small>{lang_null_exp_sp} <span class="float-right">{group_null_exp_sp}</span></small>
+        <br>
+        <small>{lang_del_role} <span class="float-right">{group_del_role}</span></small>
+        <br>
+        <small>{lang_server_manager} <span class="float-right">{group_server_manager}</span></small>
+        <br>
+        <small>{lang_send_msg} <span class="float-right">{group_send_msg}</span></small>
+        <br>
+        <small>{lang_send_mail} <span class="float-right">{group_send_mail}</span></small>
+        <br>
+        <small>{lang_settings} <span class="float-right">{group_settings}</span></small>
+        <br>
+        <small>{lang_logs} <span class="float-right">{group_logs}</span></small>
+        <br>
+        <button class="btn btn-success btn-sm mt-2" onclick="updateGroup('{group_id_group}')" href='javascript:void(0)'
+                data-toggle="modal" data-target="#updateGroup">{lang_update}
+        </button>
+        <button class="btn btn-danger btn-sm mt-2" onclick="removeGroup('{group_id_group}')">{lang_del}</button>
+    </div>
+</div>
+[/foreach-groups]
+
+<div class="clearfix"></div>
+
+<div class="dark-form">
+
+    <!-- add group -->
+    <div class="modal show" id="addGroup" tabindex="-1" role="dialog" aria-labelledby="addGroupLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addGroupLabel">{lang_add_group}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm2" style="overflow-x:hidden; height: 400px">
+                        <input name='iwebTitle' id="iwebTitle" class='form-control' type='text' value=""
+                               placeholder='{lang_group_name}'>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="xml_edit">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_xml_edit}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="visual_edit">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_visual_edit}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="gm_manager">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_gm_manager}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="kick_role">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_kick_role}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="ban">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_ban}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="add_gold">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_add_gold}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="level_up">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_level_up}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="rename_role">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_rename_role}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="teleport">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_teleport}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="null_exp_sp">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_null_exp_sp}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="del_role">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_del_role}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="server_manager">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_server_manager}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="send_msg">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_send_msg}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="send_mail">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_send_mail}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="settings">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_settings}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="logs">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_logs}</span>
+                        </label>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id='addGroupIweb' data-dismiss="modal">Создать
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- add group -->
+    <div class="modal show" id="updateGroup" tabindex="-1" role="dialog" aria-labelledby="updateGroupLabel"
+         aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateGroupLabel">{lang_update_group}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm4" style="overflow-x:hidden; height: 400px">
+                        <input name='upd_iwebTitle' id="updateIwebTitle" class='form-control' type='text' value=""
+                               placeholder='{lang_group_name}'>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_xml_edit">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_xml_edit}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_visual_edit">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_visual_edit}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_gm_manager">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_gm_manager}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_kick_role">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_kick_role}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_ban">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_ban}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_add_gold">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_add_gold}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_level_up">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_level_up}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_rename_role">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_rename_role}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_teleport">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_teleport}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_null_exp_sp">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_null_exp_sp}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_del_role">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_del_role}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_server_manager">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_server_manager}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_send_msg">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_send_msg}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_send_mail">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_send_mail}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_settings">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_settings}</span>
+                        </label><br>
+                        <label class="custom-control custom-checkbox w-100 m-2">
+                            <input type="checkbox" class='custom-control-input' name="upd_logs">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> {lang_logs}</span>
+                        </label>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id='updateGroupIweb' data-dismiss="modal">Изменить
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--{group_xml_edit}-->
+<!--{group_visual_edit}-->
+<!--{group_gm_manager}-->
+<!--{group_kick_role}-->
+<!--{group_ban}-->
+<!--{group_add_gold}-->
+<!--{group_level_up}-->
+<!--{group_rename_role}-->
+<!--{group_teleport}-->
+<!--{group_null_exp_sp}-->
+<!--{group_del_role}-->
+<!--{group_server_manager}-->
+<!--{group_send_msg}-->
+<!--{group_send_mail}-->
+<!--{group_settings}-->
+<!--{group_logs}-->
+
+<script>
+    var lang_xml_edit = "{lang_xml_edit}";
+    var lang_visual_edit = "{lang_visual_edit}";
+    var lang_gm_manager = "{lang_gm_manager}";
+    var lang_kick_role = "{lang_kick_role}";
+    var lang_ban = "{lang_ban}";
+    var lang_add_gold = "{lang_add_gold}";
+    var lang_level_up = "{lang_level_up}";
+    var lang_rename_role = "{lang_rename_role}";
+    var lang_teleport = "{lang_teleport}";
+    var lang_null_exp_sp = "{lang_null_exp_sp}";
+    var lang_del_role = "{lang_del_role}";
+    var lang_server_manager = "{lang_server_manager}";
+    var lang_send_msg = "{lang_send_msg}";
+    var lang_send_mail = "{lang_send_mail}";
+    var lang_settings = "{lang_settings}";
+    var lang_logs = "{lang_logs}";
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

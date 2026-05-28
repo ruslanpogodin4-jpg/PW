@@ -1,0 +1,298 @@
+
+
+
+<div class="float-left col-sm-3 d-flex p-3 my-3 ml-2 text-white-50 {status_color} rounded box-shadow">
+    <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100"><i class="fas fa-globe"></i> Статус сервера</h6>
+        <small>{status}</small>
+    </div>
+</div>
+
+<div class="float-left col-sm-3 d-flex p-3 my-3 ml-2 text-white-50 bg-info rounded box-shadow">
+    <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100"><i class="fas fa-users"></i> Аккаунты</h6>
+        <small>{accounts}</small>
+    </div>
+</div>
+
+<div class="float-left col-sm-3 d-flex p-3 my-3 ml-2 text-white-50 bg-primary rounded box-shadow">
+    <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100"><i class="fas fa-signal"></i> В сети</h6>
+        <small>{online}</small>
+    </div>
+</div>
+
+<div class="float-left col-sm-3 d-flex p-3 my-3 ml-2 text-white-50 bg-purple rounded box-shadow">
+    <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100"><i class="fas fa-cloud"></i> Версия IWEB: {iversion}</h6>
+        <small>{newVersion}</small>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<hr>
+<div class="dark-form">
+    <h6>Онлайн персонажи</h6>
+    <table data-toggle="datatable" class="table table-dark">
+        <thead>
+        <tr>
+            <th>ID Аккаунта</th>
+            <th>ID Персонажа</th>
+            <th>Имя</th>
+            <th width="45%">Управление</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {online_users}
+        </tbody>
+    </table>
+
+
+    <hr>
+    <h6>Список аккаунтов <button class="btn btn-sm btn-success" href='javascript:void(0)' data-toggle="modal" data-target="#addUser"><i class="fa fa-plus-circle"></i> Добавить аккаунт</button></h6>
+    <table data-toggle="datatable" class="table table-dark">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Группа</th>
+            <th>Дата создания</th>
+            <th>Управление</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {accounts_list}
+        </tbody>
+    </table>
+    
+    <!-- add user -->
+    <div class="modal show" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUserLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserLabel">Добавление аккаунта</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm2">
+                    <input name='addUsername' id="addUsername" class='form-control' type='text' value="" placeholder='Имя пользователя'>
+                    <select title="" class='form-control' name="typePassword" id="typePassword">
+                        <option value="md5">Кодировка пароля (md5)</option>
+                        <option value="base64">Кодировка пароля (base64)</option>
+                    </select>
+                    <input name='addPassword' id="addPassword" class='form-control' type='text' value="" placeholder='Пароль'>
+                    <input name='addEmail' id="addEmail" class='form-control' type='text' value="" placeholder='Email'>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id='addUserGo' data-dismiss="modal">Создать</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Персонажи -->
+    <div class="modal show" id="getChar" tabindex="-1" role="dialog" aria-labelledby="getCharLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="getCharLabel">Список персонажей</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="charListModal"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Голд -->
+    <div class="modal show" id="addCash" tabindex="-1" role="dialog" aria-labelledby="addCashLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCashLabel">Выдача золота</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span style='color: #6e8385'>После пополнения перезайдите на персонажа!</span>
+                    <input name='goldCountSend' class='form-control' type='text' placeholder='Количество золота'>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" id='acceptGold' data-dismiss="modal">Отправить
+                        золото
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Бан -->
+    <div class="modal show" id="ban" tabindex="-1" role="dialog" aria-labelledby="banLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="banLabel">Управление блокировками</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm">
+                    <input name='banTime' id="banTime" class='form-control' type='text' value="" placeholder='Время в секундах'>
+                    <input name='banReason' id="banReason" class='form-control' type='text' value="" placeholder='Причина'>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" id='acceptBan' data-dismiss="modal">Заблокировать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GM -->
+    <div class="modal show" id="editGM" tabindex="-1" role="dialog" aria-labelledby="editGMLabel" aria-hidden="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editGMLabel">Настройка GM прав</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <button name='selectall' class='btn btn-sm btn-outline-success'>Выбрать все</button>
+
+                    <button name='unselectall' class='btn btn-sm btn-outline-danger'>Снять все</button>
+
+                    <br>
+                    <br>
+                    <form id="modalForm1">
+                    <div style="overflow:scroll; height: 400px">
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-0' value='0'> 0 - Переключение
+                        отображения ник или ИД</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-1' value='1'> 1 - ГМ
+                        Инвиз</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-2' value='2'> 2 - Переключение
+                        сетевого статуса</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-3' value='3'> 3 - Переключение
+                        параметров разговора</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-4' value='4'> 4 - Перейти к персонажу</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-5' value='5'> 5 - Телепортировать к
+                        себе</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-6' value='6'> 6 - ГМ телепорт</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-7' value='7'> 7 - Телепорт к
+                        НПС</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-8' value='8'> 8 - ГМ телепорт
+                        2</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-9' value='9'> 9 - Увеличение скорости</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-10' value='10'> 10 - Следить за
+                        игроком</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-11' value='11'> 11 - Персонажи онлайн</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-100' value='100'> 100 - Ограничить
+                        персонажа</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-101' value='101'> 101 - Бан
+                        чата</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-102' value='102'> 102 - Запрет торга</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-103' value='103'> 103 - Запрет
+                        продажи</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-104' value='104'> 104 - ГМ
+                        чат</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-105' value='105'> 105 - Остановка
+                        сервера</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-200' value='200'> 200 - Призыв мобов</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-201' value='201'> 201 - Призыв для
+                        рассеивания</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-202' value='202'> 202 -
+                        Маскировка</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-203' value='203'> 203 - ГМ
+                        администратор</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-204' value='204'> 204 - Двойной опыт</label><br>
+
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-205' value='205'> 205 - Одновременные
+                        соединения</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-206' value='206'> 206 - Генератор
+                        чудовищ</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-207' value='207'> 207 - Запрет торгов</label><br>
+
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-208' value='208'> 208 - Запрет
+                        аукциона</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-209' value='209'> 209 - Запрет почты</label><br>
+
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-210' value='210'> 210 - Запрет кланов</label><br>
+
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-211' value='211'> 211 - Двойные
+                        деньги</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-212' value='212'> 212 - Двойной опыт</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-213' value='213'> 213 - Двойной
+                        Дух</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-214' value='214'> 214 - Запрет
+                        продажи карт и PVP</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-501' value='501'> 501 - Изменять
+                        информацию</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-502' value='502'> 502 - Показать
+                        статус</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-503' value='503'> 503 - Показать логи</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-504' value='504'> 504 - Перезапустить
+                        Сервер</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-505' value='505'> 505 - Перезапустить
+                        базу данных</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-506' value='506'> 506 - Показать айди
+                        игрока</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-507' value='507'> 507 - Показать
+                        информацию об игроке</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-508' value='508'> 508 - Показать
+                        статус игрока</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-509' value='509'> 509 -
+                        Present</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-510' value='510'> 510 -
+                        GetUserForbids</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-511' value='511'> 511 -
+                        GetUserCardused</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-512' value='512'> 512 - Дать Points
+                        игроку</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-513' value='513'> 513 - Обновить
+                        Point игрока</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-514' value='514'> 514 - Изменить
+                        информацию об игроке по имени</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-515' value='515'> 515 - Обновить
+                        информацию об игроке по имени</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-516' value='516'> 516 - Кикнуть
+                        игрока</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-517' value='517'> 517 -
+                        GetRoleList</label><br>
+                    <label><input type='checkbox' class='custom-checkbox' name='gm-518' value='518'> 518 - Обновить
+                        пароль Аккаунта</label><br>
+
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" id='addGM' data-dismiss="modal">Установить GM права
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

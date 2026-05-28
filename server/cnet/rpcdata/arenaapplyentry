@@ -1,0 +1,82 @@
+#ifndef __GNET_ARENAAPPLYENTRY_RPCDATA
+#define __GNET_ARENAAPPLYENTRY_RPCDATA
+
+#include "rpcdefs.h"
+
+
+namespace GNET
+{
+	class ArenaApplyEntry : public GNET::Rpc::Data
+	{
+	public:
+		int roleid;
+		int total_victory;
+		int total_defeat;
+		int kill_number;
+		int death_number;
+
+	public:
+		ArenaApplyEntry (int l_roleid = 0,int l_total_victory = 0,int l_total_defeat = 0
+			,int l_kill_number = 0,int l_death_number = 0)
+			: roleid(l_roleid),total_victory(l_total_victory),total_defeat(l_total_defeat)
+			,kill_number(l_kill_number),death_number(l_death_number)
+		{
+		}
+
+		ArenaApplyEntry(const ArenaApplyEntry &rhs)
+			: roleid(rhs.roleid),total_victory(rhs.total_victory),total_defeat(rhs.total_defeat),
+			kill_number(rhs.kill_number),death_number(rhs.death_number) { }
+
+		Rpc::Data *Clone() const { return new ArenaApplyEntry(*this); }
+
+		Rpc::Data& operator = (const Rpc::Data &rhs)
+		{
+			const ArenaApplyEntry *r = dynamic_cast<const ArenaApplyEntry *>(&rhs);
+			if (r && r != this)
+			{
+				roleid = r->roleid;
+				total_victory = r->total_victory;
+				total_defeat = r->total_defeat;
+				kill_number = r->kill_number;
+				death_number = r->death_number;
+			}
+			return *this;
+		}
+
+		ArenaApplyEntry& operator = (const ArenaApplyEntry &rhs)
+		{
+			const ArenaApplyEntry *r = &rhs;
+			if (r && r != this)
+			{
+				roleid = r->roleid;
+				total_victory = r->total_victory;
+				total_defeat = r->total_defeat;
+				kill_number = r->kill_number;
+				death_number = r->death_number;
+			}
+			return *this;
+		}
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << roleid;
+			os << total_victory;
+			os << total_defeat;
+			os << kill_number;
+			os << death_number;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> roleid;
+			os >> total_victory;
+			os >> total_defeat;
+			os >> kill_number;
+			os >> death_number;
+			return os;
+		}
+
+	};
+};
+#endif

@@ -1,0 +1,38 @@
+	public:
+		std::vector<ArenaApplyEntry> list;
+		int team_id;
+		int battle_mode;
+		enum { PROTOCOL_TYPE = PROTOCOL_ARENABATTLEQUEUEAPPLY };
+	public:
+		ArenaBattleQueueApply() { type = PROTOCOL_ARENABATTLEQUEUEAPPLY; }
+		ArenaBattleQueueApply(void*) : Protocol(PROTOCOL_ARENABATTLEQUEUEAPPLY) { }
+		ArenaBattleQueueApply (const std::vector<ArenaApplyEntry>& l_list,int l_team_id = 0,int l_battle_mode = 0)
+			 : list(l_list),team_id(l_team_id),battle_mode(l_battle_mode)
+		{
+			type = PROTOCOL_ARENABATTLEQUEUEAPPLY;
+		}
+
+		ArenaBattleQueueApply(const ArenaBattleQueueApply &rhs)
+			: Protocol(rhs),list(rhs.list),team_id(rhs.team_id),battle_mode(rhs.battle_mode) { }
+
+		GNET::Protocol *Clone() const { return new ArenaBattleQueueApply(*this); }
+
+		OctetsStream& marshal(OctetsStream & os) const
+		{
+			os << list;
+			os << team_id;
+			os << battle_mode;
+			return os;
+		}
+
+		const OctetsStream& unmarshal(const OctetsStream &os)
+		{
+			os >> list;
+			os >> team_id;
+			os >> battle_mode;
+			return os;
+		}
+
+		int PriorPolicy( ) const { return 1; }
+
+		bool SizePolicy(size_t size) const { return size <= 512; }
